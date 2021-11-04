@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Colors } from "./constants/ColorPalette";
 
 const AppTheme = ({ children }) => {
   const theme = createTheme({
     palette: {
-      type: "light",
+      mode: "light",
+      primary: { main: Colors.YELLOW_CYBER },
     },
     typography: {
       fontSize: 12,

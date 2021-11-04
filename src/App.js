@@ -1,11 +1,12 @@
 import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 
-import logo from "./logo.svg";
 import "./App.css";
 
-import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/500.css";
+import { Card, Typography } from "@mui/material";
 import AppTheme from "./AppTheme";
+import ScreensRoot from "./screens/Root";
 
 function App() {
   return (
@@ -13,22 +14,12 @@ function App() {
       <CssBaseline />
 
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit
-            <code>src/App.js</code>
-            and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="App-body">
+          <Card>
+            <Typography component="p">Click the Fox! Game</Typography>
+            <ScreensRoot />
+          </Card>
+        </div>
       </div>
     </AppTheme>
   );

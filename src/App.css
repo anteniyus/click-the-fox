@@ -1,3 +1,11 @@
+html {
+  background: url(../src/assets/images/bg-sky.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .App {
   text-align: center;
 }
@@ -13,8 +21,9 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.App-body {
+  background: url(../src/assets/images/bg-sky.jpg) no-repeat center center fixed;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
