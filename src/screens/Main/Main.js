@@ -7,6 +7,15 @@ import { Colors } from "../../constants/ColorPalette";
 const StyledCard = styled(Card)`
   box-shadow: none;
   border: 2px solid ${Colors.BLUE_EGYPTIAN};
+  width: 35rem;
+  height: auto;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledTypography = styled(Typography)`
@@ -18,7 +27,9 @@ const MainScreen = () => (
     <StyledTypography component="p" variant="h5">
       Click the Fox! Game
     </StyledTypography>
-    <ScreensRoot />
+    <StyledDiv>
+      <ScreensRoot />
+    </StyledDiv>
   </StyledCard>
 );
 

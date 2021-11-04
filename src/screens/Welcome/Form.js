@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, TextField } from "@mui/material";
 import * as moment from "moment";
+import { useHistory } from "react-router-dom";
 import CustomButton from "../../components/Buttons/CustomButton";
 import WelcomeInfo from "./Info";
 import { addUser } from "../../store/slice/UserSlice";
@@ -10,15 +11,14 @@ const WelcomeForm = () => {
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const createUser = () => {
     setSubmitted(true);
     dispatch(
       addUser({
@@ -27,6 +27,15 @@ const WelcomeForm = () => {
         date: moment().format("YYYY, MMM DD"),
       })
     );
+  };
+
+  const loadList = () => history.push("/users");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!submitted) createUser();
+    else loadList();
   };
 
   const renderContent = () =>
