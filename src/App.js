@@ -1,5 +1,8 @@
 import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Provider } from "react-redux";
+
+import store from "./store/store";
 
 import "./App.css";
 
@@ -9,15 +12,17 @@ import MainScreen from "./screens/Main/Main";
 
 function App() {
   return (
-    <AppTheme>
-      <CssBaseline />
+    <Provider store={store}>
+      <AppTheme>
+        <CssBaseline />
 
-      <div className="App">
-        <div className="App-body">
-          <MainScreen />
+        <div className="App">
+          <div className="App-body">
+            <MainScreen />
+          </div>
         </div>
-      </div>
-    </AppTheme>
+      </AppTheme>
+    </Provider>
   );
 }
 

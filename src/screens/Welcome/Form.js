@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Box, TextField } from "@mui/material";
+import * as moment from "moment";
 import CustomButton from "../../components/Buttons/CustomButton";
 import WelcomeInfo from "./Info";
+import { addUser } from "../../store/slice/UserSlice";
 
 const WelcomeForm = () => {
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -15,6 +20,13 @@ const WelcomeForm = () => {
     event.preventDefault();
 
     setSubmitted(true);
+    dispatch(
+      addUser({
+        name,
+        score: 0,
+        date: moment().format("YYYY, MMM DD"),
+      })
+    );
   };
 
   const renderContent = () =>
