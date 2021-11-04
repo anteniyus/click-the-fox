@@ -7,7 +7,8 @@ import { Colors } from "../../constants/ColorPalette";
 const StyledButton = styled(Button)`
   box-shadow: none;
   border: 2px solid ${Colors.GOLD};
-  color: ${(props) => (props.variant === "outlined" ? "black" : "white")};
+  color: ${(props) =>
+    props.variant === "outlined" ? "black !important" : "white !important"};
 `;
 
 const CustomButton = ({ children, variant, type, disabled }) => (
