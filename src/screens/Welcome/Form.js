@@ -6,7 +6,7 @@ import * as moment from "moment";
 import { useHistory } from "react-router-dom";
 import CustomButton from "../../components/Buttons/CustomButton";
 import WelcomeInfo from "./Info";
-import { addUser } from "../../store/slice/UserSlice";
+import { addUser, updateCurrentUser } from "../../store/slice/UserSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,13 +41,16 @@ const WelcomeForm = () => {
     );
   };
 
-  const loadList = () => history.push("/users");
+  const redirectToPlay = () => {
+    dispatch(updateCurrentUser(name));
+    history.push("/play");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!submitted) createUser();
-    else loadList();
+    else redirectToPlay();
   };
 
   const renderContent = () =>

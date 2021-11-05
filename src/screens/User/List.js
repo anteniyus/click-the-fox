@@ -42,6 +42,7 @@ const UserList = () => {
   const history = useHistory();
 
   const redirectToWelcomeScreen = () => history.push("/");
+  const redirectToPlayScreen = () => history.push("/play");
 
   return (
     <StyledCard>
@@ -56,7 +57,9 @@ const UserList = () => {
         <CustomButton variant="contained" onClick={redirectToWelcomeScreen}>
           To Welcome Screen
         </CustomButton>
-        <CustomButton variant="contained">PLAY!</CustomButton>
+        <CustomButton variant="contained" onClick={redirectToPlayScreen}>
+          PLAY!
+        </CustomButton>
       </div>
     </StyledCard>
   );
