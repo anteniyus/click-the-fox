@@ -5,15 +5,27 @@ import {
   getFox,
 } from "../../containers/Image/service/ImageService";
 
+const loadImage = (image) =>
+  new Promise((resolve, reject) => {
+    const loadImg = new Image();
+    loadImg.src = image.data;
+    loadImg.onload = () => resolve(image);
+    loadImg.onerror = (err) => reject(err);
+  });
+
 export const getImages = createAsyncThunk("images", async () => {
-  const allPromises = [];
-  for (let i = 0; i < 2; i++) allPromises.push(getCat());
+  const allPromisesURLLoad = [];
 
-  for (let i = 0; i < 6; i++) allPromises.push(getDog());
+  for (let i = 0; i < 2; i++) allPromisesURLLoad.push(getCat());
+  for (let i = 0; i < 6; i++) allPromisesURLLoad.push(getDog());
 
-  allPromises.push(getFox());
+  allPromisesURLLoad.push(getFox());
 
-  return Promise.all(allPromises);
+  return Promise.all(allPromisesURLLoad).then((images) => {
+    const allPromisesImageLoad = images.map((image) => loadImage(image));
+
+    return Promise.all(allPromisesImageLoad);
+  });
 });
 
 const imageSlice = createSlice({

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { CardMedia, Paper } from "@mui/material";
@@ -32,18 +32,8 @@ const useStyles = makeStyles((theme) => ({
 const SectionImage = ({ onImageClick }) => {
   const classes = useStyles();
 
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  const { images } = useSelector((state) => state.images);
+  const { images, isLoading } = useSelector((state) => state.images);
   const dispatch = useDispatch();
-
-  const loadImage = (imageURL) =>
-    new Promise((resolve, reject) => {
-      const loadImg = new Image();
-      loadImg.src = imageURL;
-      loadImg.onload = () => resolve(imageURL);
-      loadImg.onerror = (err) => reject(err);
-    });
 
   useEffect(() => {
     dispatch(getImages());
@@ -53,18 +43,7 @@ const SectionImage = ({ onImageClick }) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (images.length) {
-      const allPromises = images.map((image) => loadImage(image.data));
-
-      Promise.all(allPromises)
-        .then(() => setImagesLoaded(true))
-        .catch((err) => console.log("Failed to load images", err));
-    }
-  }, [images]);
-
   const handleImageClick = (type) => {
-    setImagesLoaded(false);
     onImageClick(type);
   };
 
@@ -81,7 +60,7 @@ const SectionImage = ({ onImageClick }) => {
 
   return (
     <Paper className={classes.container}>
-      {imagesLoaded ? createUI() : <p>LOADING</p>}
+      {isLoading ? <p>LOADING</p> : createUI()}
     </Paper>
   );
 };
