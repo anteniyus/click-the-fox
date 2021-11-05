@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CardMedia, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { v4 as uuidv4 } from "uuid";
-import { getImages } from "../../store/slice/ImageSlice";
+import { clearImages, getImages } from "../../store/slice/ImageSlice";
 import randomize from "../../utility/ArrayUtility";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,11 +47,15 @@ const SectionImage = ({ onImageClick }) => {
 
   useEffect(() => {
     dispatch(getImages());
+
+    return function cleanup() {
+      dispatch(clearImages());
+    };
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (images.length) {
-      const allPromises = await images.map((image) => loadImage(image.data));
+      const allPromises = images.map((image) => loadImage(image.data));
 
       Promise.all(allPromises)
         .then(() => setImagesLoaded(true))

@@ -23,7 +23,11 @@ const imageSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearImages(state) {
+      state.images = [];
+    },
+  },
   extraReducers: {
     [getImages.pending]: (state) => {
       state.isLoading = true;
@@ -41,5 +45,7 @@ const imageSlice = createSlice({
     },
   },
 });
+
+export const { clearImages } = imageSlice.actions;
 
 export default imageSlice.reducer;
