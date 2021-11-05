@@ -1,4 +1,4 @@
-const orderBy = (propName) => (a, b) => {
+const orderByAscending = (propName) => (a, b) => {
   const aProb = a[propName];
   const bProb = b[propName];
   if (aProb > bProb) return 1;
@@ -6,4 +6,12 @@ const orderBy = (propName) => (a, b) => {
   return 0;
 };
 
-export default orderBy;
+const orderByDescending = (propName) => (a, b) => {
+  const aProb = a[propName];
+  const bProb = b[propName];
+  if (aProb > bProb) return -1;
+  if (aProb < bProb) return 1;
+  return 0;
+};
+
+export { orderByAscending, orderByDescending };

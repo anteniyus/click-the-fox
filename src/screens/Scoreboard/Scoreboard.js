@@ -5,7 +5,7 @@ import { Card } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useHistory } from "react-router-dom";
 import CustomStickyHeaderTable from "../../components/Tables/CustomStickyHeaderTable";
-import orderBy from "../../utility/SortUtility";
+import { orderByDescending } from "../../utility/SortUtility";
 import CustomButton from "../../components/Buttons/CustomButton";
 
 const columns = [
@@ -48,7 +48,7 @@ const Scoreboard = () => {
     <StyledCard>
       <CustomStickyHeaderTable
         columns={columns}
-        data={[...users].sort(orderBy("score"))}
+        data={[...users].sort(orderByDescending("score"))}
         hasRowCounter
         rowCounterTitle="Rank"
       />
