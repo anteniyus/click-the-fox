@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
-    padding: "0 2rem",
+    padding: ".5rem 2rem",
     boxShadow: "none",
   },
   info: {
