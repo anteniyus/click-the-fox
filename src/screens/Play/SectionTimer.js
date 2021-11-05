@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Typography } from "@mui/material";
 
 const SectionTimer = ({ onComplete }) => {
-  const [counter, setCounter] = React.useState(4);
+  const [counter, setCounter] = React.useState(105);
 
   useEffect(() => {
     if (counter) setTimeout(() => setCounter(counter - 1), 1000);

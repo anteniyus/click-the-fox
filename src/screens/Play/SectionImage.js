@@ -5,6 +5,7 @@ import { CardMedia, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { v4 as uuidv4 } from "uuid";
 import { getImages } from "../../store/slice/ImageSlice";
+import randomize from "../../utility/ArrayUtility";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -64,7 +65,7 @@ const SectionImage = ({ onImageClick }) => {
   };
 
   const createUI = () =>
-    images.map((image) => (
+    randomize(images).map((image) => (
       <CardMedia
         key={uuidv4()}
         component="img"
