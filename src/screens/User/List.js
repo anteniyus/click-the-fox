@@ -1,7 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import CustomStickyHeaderTable from "../../components/Tables/CustomTable";
+import styled from "styled-components";
+import { Card } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import CustomStickyHeaderTable from "../../components/Tables/CustomStickyHeaderTable";
 import orderBy from "../../utility/SortUtility";
+import CustomButton from "../../components/Buttons/CustomButton";
 
 const columns = [
   { title: "Name", key: "name" },
@@ -9,19 +13,46 @@ const columns = [
   { title: "Score", key: "score" },
 ];
 
+const StyledCard = styled(Card)`
+  box-shadow: none !important;
+  padding: 0 2rem;
+  max-width: 40rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-around;
+`;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "space-around",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+    },
+  },
+}));
+
 const UserList = () => {
+  const classes = useStyles();
+
   const { users } = useSelector((state) => state.users);
 
   return (
-    <CustomStickyHeaderTable
-      columns={columns}
-      data={[...users]
-        .sort(orderBy("score"))
-        .sort(orderBy("date"))
-        .sort(orderBy("name"))}
-      hasRowCounter
-      rowCounterTitle="Rank"
-    />
+    <StyledCard>
+      <CustomStickyHeaderTable
+        columns={columns}
+        data={[...users].sort(orderBy("score"))}
+        hasRowCounter
+        rowCounterTitle="Rank"
+      />
+
+      <div className={classes.root}>
+        <CustomButton variant="contained">To Welcome Screen</CustomButton>
+        <CustomButton variant="contained">PLAY!</CustomButton>
+      </div>
+    </StyledCard>
   );
 };
 

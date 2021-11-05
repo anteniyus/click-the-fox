@@ -29,8 +29,8 @@ const CustomStickyHeaderTable = ({
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", height: "30rem" }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      <TableContainer sx={{ maxHeight: 300 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -51,11 +51,9 @@ const CustomStickyHeaderTable = ({
                     </TableCell>
                   )}
                   {columns.map((column) => (
-                    <>
-                      <TableCell key={column.key} component="th" scope="row">
-                        {item[column.key]}
-                      </TableCell>
-                    </>
+                    <TableCell key={column.key} component="th" scope="row">
+                      {item[column.key]}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))}

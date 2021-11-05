@@ -7,8 +7,7 @@ import { Colors } from "../../constants/ColorPalette";
 const StyledCard = styled(Card)`
   box-shadow: none;
   border: 2px solid ${Colors.BLUE_EGYPTIAN};
-  width: 35rem;
-  height: auto;
+  max-width: 80%;
 `;
 
 const StyledDiv = styled.div`
@@ -16,6 +15,8 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledTypography = styled(Typography)`

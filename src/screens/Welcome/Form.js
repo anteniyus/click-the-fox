@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, TextField } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import * as moment from "moment";
 import { useHistory } from "react-router-dom";
 import CustomButton from "../../components/Buttons/CustomButton";
 import WelcomeInfo from "./Info";
 import { addUser } from "../../store/slice/UserSlice";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: "1rem 3rem",
+    [theme.breakpoints.down("md")]: {
+      padding: "1rem 2rem",
+    },
+  },
+}));
+
 const WelcomeForm = () => {
+  const classes = useStyles();
+
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -58,14 +70,15 @@ const WelcomeForm = () => {
         flexDirection: "column",
         justifyContent: "space-between",
         alignContent: "space-between",
-        width: "25rem",
+        width: "20rem",
+        maxWidth: "25rem",
         height: "30rem",
-        padding: "2rem 5rem",
         flexWrap: "nowrap",
         "& > *": {
           margin: "1rem",
         },
       }}
+      className={classes.root}
       noValidate
       autoComplete="off"
       onSubmit={handleSubmit}
