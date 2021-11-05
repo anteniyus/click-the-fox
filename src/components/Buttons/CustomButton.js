@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const CustomButton = ({ children, variant, type, disabled }) => {
+const CustomButton = ({ children, variant, type, disabled, onClick }) => {
   const classes = useStyles({ variant });
 
   return (
@@ -22,6 +22,7 @@ const CustomButton = ({ children, variant, type, disabled }) => {
       variant={variant}
       type={type}
       disabled={disabled}
+      onClick={onClick}
     >
       {children}
     </Button>
@@ -32,12 +33,14 @@ CustomButton.defaultProps = {
   variant: "contained",
   type: "submit",
   disabled: false,
+  onClick: () => {},
 };
 
 CustomButton.propTypes = {
   variant: PropTypes.oneOf(["contained", "outlined"]),
   type: PropTypes.oneOf(["button", "submit", "reset"]),
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 

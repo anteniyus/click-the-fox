@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Card } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useHistory } from "react-router-dom";
 import CustomStickyHeaderTable from "../../components/Tables/CustomStickyHeaderTable";
 import orderBy from "../../utility/SortUtility";
 import CustomButton from "../../components/Buttons/CustomButton";
@@ -38,6 +39,9 @@ const UserList = () => {
   const classes = useStyles();
 
   const { users } = useSelector((state) => state.users);
+  const history = useHistory();
+
+  const redirectToWelcomeScreen = () => history.push("/");
 
   return (
     <StyledCard>
@@ -49,7 +53,9 @@ const UserList = () => {
       />
 
       <div className={classes.root}>
-        <CustomButton variant="contained">To Welcome Screen</CustomButton>
+        <CustomButton variant="contained" onClick={redirectToWelcomeScreen}>
+          To Welcome Screen
+        </CustomButton>
         <CustomButton variant="contained">PLAY!</CustomButton>
       </div>
     </StyledCard>
