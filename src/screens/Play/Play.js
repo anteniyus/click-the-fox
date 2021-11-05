@@ -47,15 +47,17 @@ const Play = () => {
 
   const handleTimerCompleted = () => {
     dispatch(updateScore({ name: currentUser, score }));
-    history.push("/users");
+    history.push("/scoreboard");
   };
 
   return (
     <Card className={classes.root}>
       <Card className={classes.info}>
         <SectionScore score={score} />
+
         <SectionTimer onComplete={handleTimerCompleted} />
       </Card>
+
       <SectionImage onImageClick={handleImageClick} />
     </Card>
   );

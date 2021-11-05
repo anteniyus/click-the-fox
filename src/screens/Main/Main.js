@@ -28,6 +28,7 @@ const MainScreen = () => (
     <StyledTypography component="p" variant="h5">
       Click the Fox! Game
     </StyledTypography>
+
     <StyledDiv>
       <ScreensRoot />
     </StyledDiv>

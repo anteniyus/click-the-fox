@@ -40,6 +40,7 @@ const CustomStickyHeaderTable = ({
               ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
             {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -50,6 +51,7 @@ const CustomStickyHeaderTable = ({
                       {index + 1}
                     </TableCell>
                   )}
+
                   {columns.map((column) => (
                     <TableCell key={column.key} component="th" scope="row">
                       {item[column.key]}
@@ -60,6 +62,7 @@ const CustomStickyHeaderTable = ({
           </TableBody>
         </Table>
       </TableContainer>
+
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"

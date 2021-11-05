@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserList = () => {
+const Scoreboard = () => {
   const classes = useStyles();
 
   const { users } = useSelector((state) => state.users);
@@ -57,6 +57,7 @@ const UserList = () => {
         <CustomButton variant="contained" onClick={redirectToWelcomeScreen}>
           To Welcome Screen
         </CustomButton>
+
         <CustomButton variant="contained" onClick={redirectToPlayScreen}>
           PLAY!
         </CustomButton>
@@ -65,4 +66,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default Scoreboard;
