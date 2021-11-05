@@ -7,28 +7,13 @@ import {
 
 export const getImages = createAsyncThunk("images", async () => {
   const allPromises = [];
-  for (let i = 0; i < 2; i++) {
-    allPromises.push(getCat());
-  }
+  for (let i = 0; i < 2; i++) allPromises.push(getCat());
 
-  for (let i = 0; i < 6; i++) {
-    allPromises.push(getDog());
-  }
+  for (let i = 0; i < 6; i++) allPromises.push(getDog());
 
   allPromises.push(getFox());
-  //
-  // let imagesObject = [];
-  // await Promise.all(allPromises).then((responses) => {
-  //   imagesObject = responses.map((response, index) => {
-  //     const image = new Image();
-  //     image.src = responses[index].data;
-  //
-  //     return { image, type: responses[index].type };
-  //   });
-  // });
 
   return Promise.all(allPromises);
-  // return imagesObject;
 });
 
 const imageSlice = createSlice({
