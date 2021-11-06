@@ -5,9 +5,10 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import { store, persistor } from "./store/store";
 
+import "@fontsource/roboto/500.css";
+
 import "./App.css";
 
-import "@fontsource/roboto/500.css";
 import AppTheme from "./AppTheme";
 import MainScreen from "./screens/Main/Main";
 

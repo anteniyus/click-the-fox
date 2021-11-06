@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { CardMedia, Paper } from "@mui/material";
+import { CardMedia, Paper, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { v4 as uuidv4 } from "uuid";
 import { useSnackbar, withSnackbar } from "notistack";
-import { getImages } from "../../store/slice/ImageSlice";
-import CustomButton from "../../components/Buttons/CustomButton";
+import { getImages } from "../../../../store/slice/ImageSlice";
+import CustomButton from "../../../../components/Buttons/CustomButton";
+import { isFunction } from "../../../../utility/Validator";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SectionImage = ({ onImageClick }) => {
   const classes = useStyles();
+
   const [localLoading, setLocalLoading] = useState(true);
 
   const { currentImages, error } = useSelector((state) => state.images);
@@ -44,12 +46,12 @@ const SectionImage = ({ onImageClick }) => {
 
   const handleImageClick = (type) => {
     setLocalLoading(true);
-    onImageClick(type);
+    if (isFunction(onImageClick)) onImageClick(type);
   };
 
   const createUI = () =>
     localLoading ? (
-      <p>LOADING</p>
+      <Typography variant="h5">LOADING</Typography>
     ) : (
       currentImages.map((image) => (
         <CardMedia

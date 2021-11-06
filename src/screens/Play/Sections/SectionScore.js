@@ -6,8 +6,7 @@ const SectionScore = ({ score }) => (
   <Typography variant="h5">
     Score
     <Typography component="span" variant="h4">
-      {" "}
-      {score}
+      {` ${score}`}
     </Typography>
   </Typography>
 );

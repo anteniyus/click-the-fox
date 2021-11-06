@@ -6,8 +6,7 @@ const WelcomeInfo = ({ name, changeName }) => (
   <Typography variant="h5">
     Hello
     <Typography component="span" variant="h4" onClick={changeName}>
-      {" "}
-      {name}
+      {` ${name}`}
     </Typography>
   </Typography>
 );

@@ -53,7 +53,7 @@ const WelcomeForm = () => {
 
   const createUser = () => {
     if (checkUserExistence())
-      enqueueSnackbar("User Already Exist", {
+      enqueueSnackbar("User Already Exists.", {
         variant: "error",
       });
     else dispatchCreateUser();

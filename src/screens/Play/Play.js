@@ -3,9 +3,9 @@ import { makeStyles } from "@mui/styles";
 import { Card } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import SectionImage from "./SectionImage";
-import SectionScore from "./SectionScore";
-import SectionTimer from "./SectionTimer";
+import SectionImage from "./Sections/Image/SectionImage";
+import SectionScore from "./Sections/SectionScore";
+import SectionTimer from "./Sections/SectionTimer";
 import { updateScore } from "../../store/slice/UserSlice";
 import { getCurrentImages, getImages } from "../../store/slice/ImageSlice";
 
@@ -33,6 +33,7 @@ const Play = () => {
   const { images } = useSelector((state) => state.images);
 
   const [score, setScore] = useState(0);
+
   const history = useHistory();
   const dispatch = useDispatch();
 

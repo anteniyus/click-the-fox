@@ -3,7 +3,7 @@ import {
   getCat,
   getDog,
   getFox,
-} from "../../containers/Image/service/ImageService";
+} from "../../screens/Play/Sections/Image/service/ImageService";
 import randomize from "../../utility/ArrayUtility";
 
 const loadImage = (image) =>
