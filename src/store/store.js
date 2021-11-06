@@ -12,6 +12,7 @@ import {
 } from "redux-persist/es/constants";
 import userReducer from "./slice/UserSlice";
 import imageReducer from "./slice/ImageSlice";
+import titleReducer from "./slice/TitleSlice";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   users: userReducer,
   images: imageReducer,
+  title: titleReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

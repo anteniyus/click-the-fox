@@ -9,6 +9,7 @@ import CustomButton from "../../components/Buttons/CustomButton";
 import WelcomeInfo from "./Info";
 import { addUser, updateCurrentUser } from "../../store/slice/UserSlice";
 import { getImages } from "../../store/slice/ImageSlice";
+import { setTitle } from "../../store/slice/TitleSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,6 +86,10 @@ const WelcomeForm = () => {
 
   useEffect(() => {
     if (images.length < 10) for (let i = 0; i < 10; i++) dispatch(getImages());
+  }, []);
+
+  useEffect(() => {
+    dispatch(setTitle("Welcome"));
   }, []);
 
   return (

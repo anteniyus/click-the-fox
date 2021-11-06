@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Card } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import CustomStickyHeaderTable from "../../components/Tables/CustomStickyHeaderTable";
 import { orderByDescending } from "../../utility/SortUtility";
 import CustomButton from "../../components/Buttons/CustomButton";
+import { setTitle } from "../../store/slice/TitleSlice";
 
 const columns = [
   { title: "Name", key: "name" },
@@ -41,8 +42,14 @@ const Scoreboard = () => {
   const { users } = useSelector((state) => state.users);
   const history = useHistory();
 
+  const dispatch = useDispatch();
+
   const redirectToWelcomeScreen = () => history.push("/");
   const redirectToPlayScreen = () => history.push("/play");
+
+  useEffect(() => {
+    dispatch(setTitle("Scoreboard"));
+  }, []);
 
   return (
     <StyledCard>

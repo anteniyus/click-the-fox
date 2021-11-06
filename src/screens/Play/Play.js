@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Card } from "@mui/material";
 import { useHistory } from "react-router-dom";
@@ -8,6 +8,7 @@ import SectionScore from "./Sections/SectionScore";
 import SectionTimer from "./Sections/SectionTimer";
 import { updateScore } from "../../store/slice/UserSlice";
 import { getCurrentImages, getImages } from "../../store/slice/ImageSlice";
+import { setTitle } from "../../store/slice/TitleSlice";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -52,6 +53,10 @@ const Play = () => {
     dispatch(updateScore({ name: currentUser, score }));
     history.push("/scoreboard");
   };
+
+  useEffect(() => {
+    dispatch(setTitle("Play"));
+  }, []);
 
   return (
     <Card className={classes.root}>
