@@ -22,7 +22,7 @@ html {
 }
 
 .App-body {
-  background: url(../src/assets/images/bg-sky.jpg) no-repeat center center fixed;
+  background: linear-gradient(to right bottom, rgb(255 255 255 / 50%), rgb(188 238 253 / 70%)), url(../src/assets/images/bg-sky.jpg) no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   display: flex;
