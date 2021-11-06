@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { CardMedia, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { v4 as uuidv4 } from "uuid";
-import { clearImages, getImages } from "../../store/slice/ImageSlice";
-import randomize from "../../utility/ArrayUtility";
+import { getImages } from "../../store/slice/ImageSlice";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -32,23 +31,23 @@ const useStyles = makeStyles((theme) => ({
 const SectionImage = ({ onImageClick }) => {
   const classes = useStyles();
 
-  const { images, isLoading } = useSelector((state) => state.images);
+  const [localLoading, setLocalLoading] = useState(true);
+
+  const { currentImages } = useSelector((state) => state.images);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getImages());
-
-    return function cleanup() {
-      dispatch(clearImages());
-    };
-  }, []);
+    if (currentImages.length < 1) dispatch(getImages());
+    else setLocalLoading(false);
+  }, [currentImages]);
 
   const handleImageClick = (type) => {
+    setLocalLoading(true);
     onImageClick(type);
   };
 
   const createUI = () =>
-    randomize(images).map((image) => (
+    currentImages.map((image) => (
       <CardMedia
         key={uuidv4()}
         component="img"
@@ -60,7 +59,7 @@ const SectionImage = ({ onImageClick }) => {
 
   return (
     <Paper className={classes.container}>
-      {isLoading ? <p>LOADING</p> : createUI()}
+      {localLoading ? <p>LOADING</p> : createUI()}
     </Paper>
   );
 };

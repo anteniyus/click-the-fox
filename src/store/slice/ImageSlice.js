@@ -4,6 +4,7 @@ import {
   getDog,
   getFox,
 } from "../../containers/Image/service/ImageService";
+import randomize from "../../utility/ArrayUtility";
 
 const loadImage = (image) =>
   new Promise((resolve, reject) => {
@@ -32,6 +33,7 @@ const imageSlice = createSlice({
   name: "images",
   initialState: {
     images: [],
+    currentImages: [],
     isLoading: false,
     error: null,
   },
@@ -39,25 +41,34 @@ const imageSlice = createSlice({
     clearImages(state) {
       state.images = [];
     },
+    getCurrentImages(state) {
+      state.currentImages = state.images.length
+        ? randomize(state.images.shift())
+        : [];
+    },
   },
   extraReducers: {
     [getImages.pending]: (state) => {
       state.isLoading = true;
-      state.images = [];
       state.error = null;
     },
     [getImages.fulfilled]: (state, action) => {
-      state.images = action.payload;
+      state.images.push(action.payload);
+
+      if (state.currentImages.length < 1)
+        state.currentImages = state.images.shift();
+
       state.isLoading = false;
     },
     [getImages.rejected]: (state, action) => {
       state.images = [];
+      state.currentImages = [];
       state.error = action.error?.message;
       state.isLoading = false;
     },
   },
 });
 
-export const { clearImages } = imageSlice.actions;
+export const { clearImages, getCurrentImages } = imageSlice.actions;
 
 export default imageSlice.reducer;

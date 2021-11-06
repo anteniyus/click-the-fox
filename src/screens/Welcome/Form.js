@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Box, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import * as moment from "moment";
@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import CustomButton from "../../components/Buttons/CustomButton";
 import WelcomeInfo from "./Info";
 import { addUser, updateCurrentUser } from "../../store/slice/UserSlice";
+import { getImages } from "../../store/slice/ImageSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,12 +24,18 @@ const WelcomeForm = () => {
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
+  const { images } = useSelector((state) => state.images);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
+
+  useEffect(() => {
+    if (images.length < 10) for (let i = 0; i < 10; i++) dispatch(getImages());
+  }, []);
 
   const createUser = () => {
     setSubmitted(true);

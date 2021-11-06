@@ -7,7 +7,7 @@ import SectionImage from "./SectionImage";
 import SectionScore from "./SectionScore";
 import SectionTimer from "./SectionTimer";
 import { updateScore } from "../../store/slice/UserSlice";
-import { getImages } from "../../store/slice/ImageSlice";
+import { getCurrentImages, getImages } from "../../store/slice/ImageSlice";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -30,6 +30,7 @@ const Play = () => {
   const classes = useStyles();
 
   const { currentUser } = useSelector((state) => state.users);
+  const { images } = useSelector((state) => state.images);
 
   const [score, setScore] = useState(0);
   const history = useHistory();
@@ -41,7 +42,8 @@ const Play = () => {
   };
 
   const handleImageClick = (type) => {
-    dispatch(getImages());
+    if (images.length < 10) dispatch(getImages());
+    dispatch(getCurrentImages());
     calculatePoint(type);
   };
 
