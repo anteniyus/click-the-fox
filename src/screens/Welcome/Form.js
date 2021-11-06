@@ -4,6 +4,7 @@ import { Box, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import * as moment from "moment";
 import { useHistory } from "react-router-dom";
+import { useSnackbar, withSnackbar } from "notistack";
 import CustomButton from "../../components/Buttons/CustomButton";
 import WelcomeInfo from "./Info";
 import { addUser, updateCurrentUser } from "../../store/slice/UserSlice";
@@ -25,19 +26,21 @@ const WelcomeForm = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const { images } = useSelector((state) => state.images);
+  const { users } = useSelector((state) => state.users);
 
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
-  useEffect(() => {
-    if (images.length < 10) for (let i = 0; i < 10; i++) dispatch(getImages());
-  }, []);
+  const checkUserExistence = () =>
+    users.find((element) => element.name === name);
 
-  const createUser = () => {
+  const dispatchCreateUser = () => {
     setSubmitted(true);
     dispatch(
       addUser({
@@ -46,6 +49,14 @@ const WelcomeForm = () => {
         date: moment().format("YYYY, MMM DD"),
       })
     );
+  };
+
+  const createUser = () => {
+    if (checkUserExistence())
+      enqueueSnackbar("User Already Exist", {
+        variant: "error",
+      });
+    else dispatchCreateUser();
   };
 
   const redirectToPlay = () => {
@@ -71,6 +82,10 @@ const WelcomeForm = () => {
         onChange={handleNameChange}
       />
     );
+
+  useEffect(() => {
+    if (images.length < 10) for (let i = 0; i < 10; i++) dispatch(getImages());
+  }, []);
 
   return (
     <Box
@@ -106,4 +121,4 @@ const WelcomeForm = () => {
   );
 };
 
-export default WelcomeForm;
+export default withSnackbar(WelcomeForm);
