@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import { isFunction } from "../../../utility/Validator";
 
 const SectionTimer = ({ onComplete }) => {
-  const [counter, setCounter] = React.useState(200);
+  const [counter, setCounter] = React.useState(30);
 
   useEffect(() => {
     if (counter) setTimeout(() => setCounter(counter - 1), 1000);
