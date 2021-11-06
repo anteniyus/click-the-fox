@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { SnackbarProvider } from "notistack";
 import { Colors } from "./constants/ColorPalette";
 
 const AppTheme = ({ children }) => {
@@ -14,7 +15,11 @@ const AppTheme = ({ children }) => {
     },
   });
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider maxSnack={3}>{children}</SnackbarProvider>
+    </ThemeProvider>
+  );
 };
 
 AppTheme.propTypes = {
