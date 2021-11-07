@@ -4,10 +4,20 @@ import { Typography } from "@mui/material";
 import { isFunction } from "../../../utility/Validator";
 
 const SectionTimer = ({ onComplete }) => {
-  const [counter, setCounter] = React.useState(30);
+  const storedValueAsNumber = Number(localStorage.getItem("counter"));
+
+  const [counter, setCounter] = React.useState(
+    Number.isInteger(storedValueAsNumber) && storedValueAsNumber > 0
+      ? storedValueAsNumber
+      : 300000
+  );
 
   useEffect(() => {
-    if (counter) setTimeout(() => setCounter(counter - 1), 1000);
+    if (counter)
+      setTimeout(() => {
+        setCounter(counter - 1);
+        localStorage.setItem("counter", String(counter - 1));
+      }, 1000);
     else if (isFunction(onComplete)) onComplete();
   }, [counter]);
 
