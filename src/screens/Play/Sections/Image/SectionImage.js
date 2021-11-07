@@ -9,6 +9,7 @@ import { getImages } from "../../../../store/slice/ImageSlice";
 import CustomButton from "../../../../components/Buttons/CustomButton";
 import { isFunction } from "../../../../utility/Validator";
 import settings from "../../../../settings.json";
+import { Colors } from "../../../../constants/ColorPalette";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "8rem",
     height: "8rem",
+    "&:hover": {
+      border: `4px solid ${Colors.GOLD}`,
+    },
     [theme.breakpoints.down("md")]: {
       width: "5rem",
       height: "5rem",
