@@ -8,6 +8,7 @@ import CustomStickyHeaderTable from "../../components/Tables/CustomStickyHeaderT
 import { orderByDescending } from "../../utility/SortUtility";
 import CustomButton from "../../components/Buttons/CustomButton";
 import { setTitle } from "../../store/slice/TitleSlice";
+import settings from "../../settings.json";
 
 const columns = [
   { title: "Name", key: "name" },
@@ -62,11 +63,11 @@ const Scoreboard = () => {
 
       <div className={classes.root}>
         <CustomButton variant="contained" onClick={redirectToWelcomeScreen}>
-          To Welcome Screen
+          {settings.screens.scoreboard.sections.self.messages.WELCOME_BUTTON}
         </CustomButton>
 
         <CustomButton variant="contained" onClick={redirectToPlayScreen}>
-          PLAY!
+          {settings.screens.scoreboard.sections.self.messages.PLAY_BUTTON}
         </CustomButton>
       </div>
     </StyledCard>

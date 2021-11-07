@@ -8,6 +8,7 @@ import { useSnackbar, withSnackbar } from "notistack";
 import { getImages } from "../../../../store/slice/ImageSlice";
 import CustomButton from "../../../../components/Buttons/CustomButton";
 import { isFunction } from "../../../../utility/Validator";
+import settings from "../../../../settings.json";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -83,7 +84,9 @@ const SectionImage = ({ onImageClick }) => {
   return (
     <Paper className={classes.container}>
       {error ? (
-        <CustomButton onClick={dispatchGetImages}>RETRY</CustomButton>
+        <CustomButton onClick={dispatchGetImages}>
+          {settings.screens.play.sections.image.messages.RETRY_BUTTON}
+        </CustomButton>
       ) : (
         createUI()
       )}

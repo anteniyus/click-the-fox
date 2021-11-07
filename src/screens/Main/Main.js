@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import ScreensRoot from "../Root";
 import { Colors } from "../../constants/ColorPalette";
+import settings from "../../settings.json";
 
 const StyledTitleTypography = styled(Typography)`
   color: black;
@@ -44,7 +45,7 @@ const MainScreen = () => {
       <StyledTitleTypography variant="h3">{title}</StyledTitleTypography>
       <StyledCard>
         <StyledTypography component="p" variant="h5">
-          Click the Fox! Game
+          {settings.header.TITLE}
         </StyledTypography>
 
         <StyledDiv>

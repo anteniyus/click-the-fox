@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Typography } from "@mui/material";
 import { isFunction } from "../../../utility/Validator";
+import settings from "../../../settings.json";
 
 const SectionTimer = ({ onComplete }) => {
   const storedValueAsNumber = Number(localStorage.getItem("counter"));
@@ -9,7 +10,7 @@ const SectionTimer = ({ onComplete }) => {
   const [counter, setCounter] = React.useState(
     Number.isInteger(storedValueAsNumber) && storedValueAsNumber > 0
       ? storedValueAsNumber
-      : 300000
+      : 30
   );
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const SectionTimer = ({ onComplete }) => {
 
   return (
     <Typography variant="h6">
-      Time Left:
+      {settings.screens.play.sections.timer.messages.TIME_LEFT}
       <Typography component="span" variant="h4">
         {` ${counter}`}
       </Typography>

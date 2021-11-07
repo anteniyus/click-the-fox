@@ -10,6 +10,7 @@ import WelcomeInfo from "./Info";
 import { addUser, updateCurrentUser } from "../../store/slice/UserSlice";
 import { getImages } from "../../store/slice/ImageSlice";
 import { setTitle } from "../../store/slice/TitleSlice";
+import settings from "../../settings.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +55,7 @@ const WelcomeForm = () => {
 
   const createUser = () => {
     if (checkUserExistence())
-      enqueueSnackbar("User Already Exists.", {
+      enqueueSnackbar(settings.errors.messages.USER_EXISTENCE, {
         variant: "error",
       });
     else dispatchCreateUser();
@@ -86,11 +87,15 @@ const WelcomeForm = () => {
     );
 
   useEffect(() => {
-    if (images.length < 10) for (let i = 0; i < 10; i++) dispatch(getImages());
+    if (images.length < settings.configs.IMAGE_PRELOAD_LIMITATION)
+      for (let i = 0; i < settings.configs.IMAGE_PRELOAD_LIMITATION; i++)
+        dispatch(getImages());
   }, []);
 
   useEffect(() => {
-    dispatch(setTitle("Welcome"));
+    dispatch(
+      setTitle(settings.screens.welcome.sections.form.messages.PAGE_TITLE)
+    );
   }, []);
 
   return (
@@ -121,7 +126,7 @@ const WelcomeForm = () => {
         type="submit"
         disabled={!name}
       >
-        PLAY!
+        {settings.screens.welcome.sections.form.messages.PLAY_BUTTON}
       </CustomButton>
     </Box>
   );

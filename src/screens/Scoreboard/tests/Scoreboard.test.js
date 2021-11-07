@@ -47,7 +47,7 @@ describe("Scorboard", () => {
     expect(screen.getByText("0-0 of 0")).toBeInTheDocument();
 
     expect(screen.getByText("To Welcome Screen")).toBeInTheDocument();
-    expect(screen.getByText("PLAY!")).toBeInTheDocument();
+    expect(screen.getByText("Play!")).toBeInTheDocument();
   });
 
   test("Checks the table headers", () => {

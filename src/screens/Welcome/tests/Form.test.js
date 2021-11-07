@@ -48,7 +48,7 @@ describe("Welcome Form", () => {
     );
 
     expect(screen.getByTestId("name")).toBeInTheDocument();
-    expect(screen.getByText("PLAY!")).toBeInTheDocument();
+    expect(screen.getByText("Play!")).toBeInTheDocument();
   });
 
   test("Checks the input value", () => {

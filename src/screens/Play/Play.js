@@ -9,6 +9,7 @@ import SectionTimer from "./Sections/SectionTimer";
 import { updateScore } from "../../store/slice/UserSlice";
 import { getCurrentImages, getImages } from "../../store/slice/ImageSlice";
 import { setTitle } from "../../store/slice/TitleSlice";
+import settings from "../../settings.json";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -44,7 +45,8 @@ const Play = () => {
   };
 
   const handleImageClick = (type) => {
-    if (images.length < 10) dispatch(getImages());
+    if (images.length < settings.configs.IMAGE_PRELOAD_LIMITATION)
+      dispatch(getImages());
     dispatch(getCurrentImages());
     calculatePoint(type);
   };
@@ -55,7 +57,7 @@ const Play = () => {
   };
 
   useEffect(() => {
-    dispatch(setTitle("Play"));
+    dispatch(setTitle(settings.screens.play.sections.self.messages.PAGE_TITLE));
   }, []);
 
   return (

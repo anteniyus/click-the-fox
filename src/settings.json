@@ -1,0 +1,64 @@
+{
+  "header": {
+    "TITLE": "Click the Fox! Game"
+  },
+  "screens": {
+    "welcome": {
+      "sections": {
+        "form": {
+          "messages": {
+            "PLAY_BUTTON": "Play!",
+            "PAGE_TITLE": "Welcome"
+          }
+        },
+        "info": {
+          "messages": {
+            "USER_WELCOME": "Hello"
+          }
+        }
+      }
+    },
+    "scoreboard": {
+      "sections": {
+        "self": {
+          "messages": {
+            "PLAY_BUTTON": "Play!",
+            "WELCOME_BUTTON": "To Welcome Screen"
+          }
+        }
+      }
+    },
+    "play": {
+      "sections": {
+        "self": {
+          "messages": {
+            "PAGE_TITLE": "Play"
+          }
+        },
+        "image": {
+          "messages": {
+            "RETRY_BUTTON": "RETRY"
+          }
+        },
+        "score": {
+          "messages": {
+            "SCORE_TITLE": "Score"
+          }
+        },
+        "timer": {
+          "messages": {
+            "TIME_LEFT": "Time Left:"
+          }
+        }
+      }
+    }
+  },
+  "errors": {
+    "messages": {
+      "USER_EXISTENCE": "User Already Exists."
+    }
+  },
+  "configs": {
+    "IMAGE_PRELOAD_LIMITATION": 10
+  }
+}
