@@ -78,6 +78,7 @@ const WelcomeForm = () => {
     ) : (
       <TextField
         label="Name"
+        inputProps={{ "data-testid": "name" }}
         variant="outlined"
         value={name}
         onChange={handleNameChange}
