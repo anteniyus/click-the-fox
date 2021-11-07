@@ -13,6 +13,13 @@ const SectionTimer = ({ onComplete }) => {
       : 30
   );
 
+  useEffect(
+    () => () => {
+      localStorage.setItem("counter", String(0));
+    },
+    []
+  );
+
   useEffect(() => {
     if (counter)
       setTimeout(() => {
