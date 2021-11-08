@@ -9,6 +9,7 @@ import { orderByDescending } from "../../utility/SortUtility";
 import CustomButton from "../../components/Buttons/CustomButton";
 import { setTitle } from "../../store/slice/TitleSlice";
 import settings from "../../settings.json";
+import { internalPaths } from "../../rest/URLs";
 
 const columns = [
   { title: "Name", key: "name" },
@@ -45,8 +46,8 @@ const Scoreboard = () => {
 
   const dispatch = useDispatch();
 
-  const redirectToWelcomeScreen = () => history.push("/");
-  const redirectToPlayScreen = () => history.push("/play");
+  const redirectToWelcomeScreen = () => history.push(internalPaths.WELCOME);
+  const redirectToPlayScreen = () => history.push(internalPaths.PLAY);
 
   useEffect(() => {
     dispatch(setTitle("Scoreboard"));

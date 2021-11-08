@@ -11,6 +11,7 @@ import { addUser, updateCurrentUser } from "../../store/slice/UserSlice";
 import { getImages } from "../../store/slice/ImageSlice";
 import { setTitle } from "../../store/slice/TitleSlice";
 import settings from "../../settings.json";
+import { internalPaths } from "../../rest/URLs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,7 +64,7 @@ const WelcomeForm = () => {
 
   const redirectToPlay = () => {
     dispatch(updateCurrentUser(name));
-    history.push("/play");
+    history.push(internalPaths.PLAY);
   };
 
   const handleSubmit = (event) => {

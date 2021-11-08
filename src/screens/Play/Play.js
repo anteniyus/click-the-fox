@@ -10,6 +10,7 @@ import { updateScore } from "../../store/slice/UserSlice";
 import { getCurrentImages, getImages } from "../../store/slice/ImageSlice";
 import { setTitle } from "../../store/slice/TitleSlice";
 import settings from "../../settings.json";
+import { internalPaths } from "../../rest/URLs";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -62,11 +63,11 @@ const Play = () => {
 
   const handleTimerCompleted = () => {
     dispatch(updateScore({ name: currentUser, score }));
-    history.push("/scoreboard");
+    history.push(internalPaths.SCOREBOARD);
   };
 
   useEffect(() => {
-    if (!currentUser) history.push("/");
+    if (!currentUser) history.push(internalPaths.WELCOME);
   }, []);
 
   useEffect(() => {
