@@ -9,6 +9,12 @@ import {
 import Play from "../Play";
 import AppTheme from "../../../AppTheme";
 
+jest.mock("react-router-dom", () => ({
+  useHistory: () => ({
+    push: jest.fn(),
+  }),
+}));
+
 const mockStore = configureStore([]);
 
 describe("Play", () => {
