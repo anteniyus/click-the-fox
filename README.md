@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+## Table of contents
+
+- [Click the Fox! Game](#click-the-fox-game)
+- [Building](#building)
+- [Stack](#stack)
+- [Available Scripts](#available-scripts)
+- [How to Start Locally](#how-to-start-locally)
+- [Deployment](#deployment)
+
+# Click the Fox! Game
+This is a simple web based game. You should find the fox among other animals and click on it and get points.
+You can register on it and also change the name after submitting and start playing.
+You have 30 seconds to find all foxes that appears randomly.
+
+This application designed based on Desktop First design approach, but also, supports mobile devices.
+
+It has 3 screens:
+- Welcome
+- Play
+- Scoreboard
+
+You can register on Welcome screen and start playing and after 30 seconds you will be redirected to 
+scoreboard screen automatically and see your rank.
+
+The main URL of the application is:
+> [host]/
+
+
+![Demo](https://user-images.githubusercontent.com/4962803/140739694-8e1a5ca1-0a38-4aca-b364-e258d4a3239c.gif)
+
+## Building
+
+Building The Click the Fox! Game requires the following tools:
+
+- Git (obviously)
+- Node.js
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Stack
+
+The technology used for developing this application is:
+- React
+- Redux toolkit
+- Redux Persist
+- Material-UI
+
+And also used some libraries like **Axios**, **Styled Component**, **Notistack**.
+
 ## Available Scripts
 
-In the project directory, you can run:
+All scripts that are available in create-react-app.
 
-### `npm start`
+> You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+>
+> To learn React, check out the [React documentation](https://reactjs.org/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to Start Locally
+For starting the project locally, after cloning the project, go to the project dicretory and run the following command:
+> npm install
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+It takes some times, after it finishes, run the below command:
+>npm start
 
-### `npm test`
+The project automatically runs on **localhost:3000**, if the specified port is busy, it asks you to run it
+on another port.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment
 
-### `npm run build`
+This application has two profiles: *development* and *production*, and it handles using 
+**env-cmd** library.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For local deployment (the steps for the server deployment are the same in most cases),
+you can use nginx as web server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- First create the production build with this command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  > npm run build
 
-### `npm run eject`
+- Also, if you have profiling for different stages, you can use below command as an example 
+for production:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  > npm run build:production
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Then download the [Nginx](https://nginx.org/en/download.html) and place extracted
+  folder somewhere like: _C:/nginx_.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- After that, we must change the configuration file for serving the static files
+  generated in step one.
+  For this, Open the nginx.conf file located in: extractedPath/conf
+  like: _C:/nginx/conf_.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Now assuming our application build folder is the following path:
 
-## Learn More
+_D:/projects/click-the-fox/build_
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- In the conf file, change server part like below:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```text
+server {
 
-### Code Splitting
+    listen       5050;  #or any other ports
+    server_name  localhost;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    location / {
+        root   "D:/projects/click-the-fox/build";    #the application build folder
+        try_files  $uri /index.html;
+    }
+}
+```
 
-### Analyzing the Bundle Size
+Done. Start the Nginx.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application is accessible from the following location:
+> localhost:5050
