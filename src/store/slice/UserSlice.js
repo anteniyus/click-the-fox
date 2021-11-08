@@ -14,7 +14,8 @@ const userSlice = createSlice({
       const targetUser = state.users.find(
         (element) => element.name === action.payload.name
       );
-      targetUser.score = action.payload.score;
+
+      if (targetUser) targetUser.score = action.payload.score;
     },
     updateCurrentUser(state, action) {
       state.currentUser = action.payload;

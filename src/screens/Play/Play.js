@@ -66,6 +66,10 @@ const Play = () => {
   };
 
   useEffect(() => {
+    if (!currentUser) history.push("/");
+  }, []);
+
+  useEffect(() => {
     dispatch(setTitle(settings.screens.play.sections.self.messages.PAGE_TITLE));
   }, []);
 

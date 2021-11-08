@@ -10,6 +10,8 @@ const ScreensRoot = () => (
       <Route path="/" component={WelcomeForm} exact />
       <Route path="/scoreboard" component={Scoreboard} />
       <Route path="/play" component={Play} />
+
+      <Route component={WelcomeForm} />
     </Switch>
   </Router>
 );
