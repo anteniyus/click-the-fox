@@ -31,17 +31,26 @@ const useStyles = makeStyles(() => ({
 const Play = () => {
   const classes = useStyles();
 
+  const storedScore = Number(localStorage.getItem("currentScore"));
+
   const { currentUser } = useSelector((state) => state.users);
   const { images } = useSelector((state) => state.images);
 
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(
+    Number.isInteger(storedScore) ? storedScore : 0
+  );
 
   const history = useHistory();
   const dispatch = useDispatch();
 
   const calculatePoint = (type) => {
-    if (type === "fox") setScore(score + 1);
-    else setScore(score - 1);
+    if (type === "fox") {
+      setScore(score + 1);
+      localStorage.setItem("currentScore", String(score - 1));
+    } else {
+      setScore(score - 1);
+      localStorage.setItem("currentScore", String(score - 1));
+    }
   };
 
   const handleImageClick = (type) => {
@@ -59,6 +68,13 @@ const Play = () => {
   useEffect(() => {
     dispatch(setTitle(settings.screens.play.sections.self.messages.PAGE_TITLE));
   }, []);
+
+  useEffect(
+    () => () => {
+      localStorage.setItem("currentScore", String(0));
+    },
+    []
+  );
 
   return (
     <Card className={classes.root}>

@@ -5,12 +5,10 @@ import { isFunction } from "../../../utility/Validator";
 import settings from "../../../settings.json";
 
 const SectionTimer = ({ onComplete }) => {
-  const storedValueAsNumber = Number(localStorage.getItem("counter"));
+  const storedCounter = Number(localStorage.getItem("counter"));
 
   const [counter, setCounter] = React.useState(
-    Number.isInteger(storedValueAsNumber) && storedValueAsNumber > 0
-      ? storedValueAsNumber
-      : 30
+    Number.isInteger(storedCounter) && storedCounter > 0 ? storedCounter : 30
   );
 
   useEffect(
