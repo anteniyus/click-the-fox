@@ -9,6 +9,7 @@ import {
 } from "../../../../../utility/testUtility/ConsoleTestUtitlity";
 import AppTheme from "../../../../../AppTheme";
 import SectionImage from "../SectionImage";
+import { animalTypes } from "../../../../../constants/AnimalTypes";
 
 jest.mock("../service/ImageService");
 const mockStore = configureStore([]);
@@ -43,7 +44,7 @@ describe("Section Image", () => {
         currentImages: [
           {
             data: "https://images.dog.ceo/breeds/boxer/n02108089_5266.jpg",
-            type: "fox",
+            type: animalTypes.FOX,
           },
         ],
         isLoading: false,

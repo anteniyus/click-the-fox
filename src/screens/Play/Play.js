@@ -11,6 +11,7 @@ import { getCurrentImages, getImages } from "../../store/slice/ImageSlice";
 import { setTitle } from "../../store/slice/TitleSlice";
 import settings from "../../settings.json";
 import { internalPaths } from "../../rest/URLs";
+import { animalTypes } from "../../constants/AnimalTypes";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -45,7 +46,7 @@ const Play = () => {
   const dispatch = useDispatch();
 
   const calculatePoint = (type) => {
-    if (type === "fox") {
+    if (type === animalTypes.FOX) {
       setScore(score + 1);
       localStorage.setItem("currentScore", String(score - 1));
     } else {
