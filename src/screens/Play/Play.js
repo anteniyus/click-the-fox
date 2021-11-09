@@ -16,7 +16,7 @@ import { animalTypes } from "../../constants/AnimalTypes";
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-around",
     flexDirection: "column",
     padding: ".5rem 2rem",
     boxShadow: "none",

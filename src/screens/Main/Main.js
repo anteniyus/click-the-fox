@@ -15,6 +15,7 @@ const StyledTitleTypography = styled(Typography)`
   @media (max-width: 900px) {
     text-align: center;
     padding-left: 0;
+    padding-bottom: 2rem;
   }
 `;
 

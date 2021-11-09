@@ -15,6 +15,7 @@ import CircularLoading from "../../../../components/Loading/CircularLoading";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
+    boxShadow: "none",
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
@@ -26,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   image: {
-    width: "8rem",
-    height: "8rem",
+    width: "33.333%",
+    height: "33.333%",
     "&:hover": {
       border: `4px solid ${Colors.GOLD}`,
     },
