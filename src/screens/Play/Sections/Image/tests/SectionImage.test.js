@@ -72,8 +72,7 @@ describe("Section Image", () => {
       </Provider>
     );
 
-    expect(screen.getByRole("heading", { level: 5 })).toBeInTheDocument();
-    expect(screen.getByText("LOADING")).toBeInTheDocument();
+    expect(screen.getByRole("progressbar")).toBeInTheDocument();
   });
 
   test("Checks the retry button", async () => {

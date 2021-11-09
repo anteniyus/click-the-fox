@@ -53,7 +53,7 @@ describe("Play", () => {
       </Provider>
     );
 
-    expect(screen.getAllByRole("heading", { level: 5 })).toHaveLength(2);
+    expect(screen.getAllByRole("heading", { level: 5 })).toHaveLength(1);
     expect(screen.getByText("30")).toBeInTheDocument();
   });
 });

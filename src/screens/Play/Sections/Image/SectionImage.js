@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { CardMedia, Paper, Typography } from "@mui/material";
+import { CardMedia, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { v4 as uuidv4 } from "uuid";
 import { useSnackbar, withSnackbar } from "notistack";
@@ -10,6 +10,7 @@ import CustomButton from "../../../../components/Buttons/CustomButton";
 import { isFunction } from "../../../../utility/Validator";
 import settings from "../../../../settings.json";
 import { Colors } from "../../../../constants/ColorPalette";
+import CircularLoading from "../../../../components/Loading/CircularLoading";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -56,7 +57,7 @@ const SectionImage = ({ onImageClick }) => {
 
   const createUI = () =>
     localLoading ? (
-      <Typography variant="h5">LOADING</Typography>
+      <CircularLoading />
     ) : (
       currentImages.map((image) => (
         <CardMedia
