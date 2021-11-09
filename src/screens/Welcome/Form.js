@@ -108,7 +108,7 @@ const WelcomeForm = () => {
         justifyContent: "space-between",
         alignContent: "space-between",
         width: "20rem",
-        maxWidth: "25rem",
+        maxWidth: "20rem",
         height: "30rem",
         flexWrap: "nowrap",
         "& > *": {

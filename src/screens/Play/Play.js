@@ -20,6 +20,8 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     padding: ".5rem 2rem",
     boxShadow: "none",
+    maxWidth: "40rem",
+    height: "30rem",
   },
   info: {
     boxShadow: "none",
