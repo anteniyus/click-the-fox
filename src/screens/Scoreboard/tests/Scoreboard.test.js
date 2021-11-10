@@ -13,7 +13,7 @@ import { addUser } from "../../../store/slice/UserSlice";
 
 const mockStore = configureStore([]);
 
-describe("Scorboard", () => {
+describe("Scoreboard", () => {
   let appStore;
   beforeEach(() => {
     appStore = mockStore({

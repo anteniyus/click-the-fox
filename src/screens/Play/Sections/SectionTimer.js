@@ -15,6 +15,7 @@ const SectionTimer = ({ onComplete }) => {
 
   useEffect(() => {
     didMountRef.current = true;
+
     return () => {
       localStorage.setItem("counter", String(0));
       didMountRef.current = false;

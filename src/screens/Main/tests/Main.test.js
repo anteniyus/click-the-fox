@@ -16,7 +16,7 @@ const mockStore = configureStore([]);
 const welcomeTitle = "Welcome";
 const title = "another title";
 
-describe("Welcome Info", () => {
+describe("Main", () => {
   let appStore;
   beforeEach(() => {
     appStore = mockStore({

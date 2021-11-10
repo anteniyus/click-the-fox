@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import * as moment from "moment";
+import moment from "moment";
 import { useHistory } from "react-router-dom";
 import { useSnackbar, withSnackbar } from "notistack";
 import CustomButton from "../../components/Buttons/CustomButton";
