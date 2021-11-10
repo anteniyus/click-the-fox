@@ -12,6 +12,7 @@ const ScreensRoot = () => (
       <Route path={internalPaths.SCOREBOARD} component={Scoreboard} />
       <Route path={internalPaths.PLAY} component={Play} />
 
+      {/* Redirecting all not founded roots to Welcome Screen */}
       <Route component={WelcomeForm} />
     </Switch>
   </Router>

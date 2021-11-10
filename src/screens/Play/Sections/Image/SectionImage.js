@@ -78,6 +78,10 @@ const SectionImage = ({ onImageClick }) => {
     else setLocalLoading(false);
   }, [JSON.stringify(currentImages)]);
 
+  /*
+   * For preventing to show the error on component mount,
+   * used useRef hook function to only show any error after component mounted.
+   */
   useEffect(() => {
     if (didMountRef.current) {
       if (error)

@@ -47,6 +47,9 @@ const Play = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  /*
+   * For handling refresh scenario, save the score in local storage
+   * */
   const calculatePoint = (type) => {
     if (type === animalTypes.FOX) {
       setScore(score + 1);
@@ -57,6 +60,10 @@ const Play = () => {
     }
   };
 
+  /*
+   * For preventing to load many images bundles,
+   * we check it that how many bundles are there in the store for future use
+   * */
   const handleImageClick = (type) => {
     if (images.length < settings.configs.IMAGE_PRELOAD_LIMITATION)
       dispatch(getImages());
