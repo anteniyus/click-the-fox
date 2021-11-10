@@ -8,19 +8,21 @@
 - [Deployment](#deployment)
 
 # Click the Fox! Game
-This is a simple web based game. You should find the fox among other animals and click on it and get points.
+This is a simple web-based game. You should find the fox among other animals and click on it and get points.
 You can register on it and also change the name after submitting and start playing.
-You have 30 seconds to find all foxes that appears randomly.
+You have 30 seconds to find all foxes that will appear randomly.
 
-This application designed based on Desktop First design approach, but also, supports mobile devices.
+This application is designed based on the **Desktop First** design approach, but also, supports mobile devices.
 
 It has 3 screens:
 - Welcome
 - Play
 - Scoreboard
 
-You can register on Welcome screen and start playing and after 30 seconds you will be redirected to 
-scoreboard screen automatically and see your rank.
+You can register on the Welcome screen and start playing and after 30 seconds you will be redirected to 
+scoreboard screen automatically and will see your rank.
+
+This application supports **Image Preloading** for better experiences.
 
 The main URL of the application is:
 > [host]/
@@ -59,7 +61,7 @@ All scripts that are available in create-react-app.
 For starting the project locally, after cloning the project, go to the project dicretory and run the following command:
 > npm install
 
-It takes some times, after it finishes, run the below command:
+It takes some times, after it finished, run the below command:
 >npm start
 
 The project automatically runs on **localhost:3000**, if the specified port is busy, it asks you to run it
@@ -67,7 +69,8 @@ on another port.
 
 ## Deployment
 
-This application has two profiles: *development* and *production*, and it handles using 
+This application has two profiles: *development* and *production*, and it is being 
+handled using 
 **env-cmd** library.
 
 For local deployment (the steps for the server deployment are the same in most cases),
